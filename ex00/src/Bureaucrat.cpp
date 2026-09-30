@@ -12,22 +12,43 @@
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(void) : _name("default"), _score(0) {}
-
-Bureaucrat::Bureaucrat(std::string name, int score) : _name(name), _score(score) {}
-
-Bureaucrat::Bureaucrat(const Bureaucrat &other)
+Bureaucrat::Bureaucrat(void) : _name("default"), _grade(150) 
 {
+	std::cout << "[Bureaucrat] Default constructor was called!" << std::endl;
+}
+
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
+{
+	std::cout << "[Bureaucrat] Parameterized constructor was called!" << std::endl;
+	if (grade > MIN_GRADE)
+		throw GradeToolowException();
+	else if (grade < MAX_GRADE)
+		throw GradeTooHighException();
+	this->_name = name;
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other.getName()),
+	_grade(other.getGrade())
+{
+	std::cout << "[Bureaucrat] Copy constructor was called!" << std::endl;
+}
+
+Bureaucrat::~Bureaucrat(void) 
+{
+	std::cout << "[Bureaucrat] destructor was called!" << std::endl;
+}
+
+Bureaucrat::Bureaucrat	&operator = (const Bureaucrat &other)
+{
+	std::cout << "[Bureaucrat] sign operator was called!" << std::endl;
 	if (this != &other)
 	{
-
+		this->_name = other.getName();
+		this->_grade = other.getGrade();
 	}
 	return (*this);
 }
 
-Bureaucrat::~Bureaucrat(void) {}
+std::string	Bureaucrat::getNmae(void) const {return (this->_name);}
 
-Bureaucrat::Bureaucrat	&operator = (const Bureaucrat &other)
-{
-
-}
+int	Bureaucrat::getGrade(void) const {return (this->_grade);}

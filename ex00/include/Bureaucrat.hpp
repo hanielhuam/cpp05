@@ -11,18 +11,22 @@
 /* ************************************************************************** */
 
 #include <string>
+#include <iostream>
+
+#define MIN_GRADE 150;
+#define MAX_GRADE 1;
 
 class Bureaucrat
 {
-private:
-	std::string const	_name;
-	int					_score;
-	
-public:
-	Bureaucrat(void);
-	Bureaucrat(std::string name, int score);
-	Bureaucrat(const Bureaucrat &other);
-	~Bureaucrat(void);
+	private:
+		std::string const	_name;
+		int					_grade;
 
-	Bureaucrat	&operator = (const Bureaucrat &other);
+	public:
+		Bureaucrat(void);
+		Bureaucrat(std::string name, int grade);
+		Bureaucrat(const Bureaucrat &other);
+		~Bureaucrat(void);
+
+		Bureaucrat	&operator = (const Bureaucrat &other);
 };
