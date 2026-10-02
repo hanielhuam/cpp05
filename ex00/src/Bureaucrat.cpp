@@ -17,14 +17,14 @@ Bureaucrat::Bureaucrat(void) : _name("default"), _grade(150)
 	std::cout << "[Bureaucrat] Default constructor was called!" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
+Bureaucrat::Bureaucrat(const std::string &name, const int &grade) : _name(name)
 {
 	std::cout << "[Bureaucrat] Parameterized constructor was called!" << std::endl;
 	if (grade > MIN_GRADE)
 		throw GradeToolowException();
 	else if (grade < MAX_GRADE)
 		throw GradeTooHighException();
-	this->_name = name;
+	this->_grade = grade;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other.getName()),
@@ -38,17 +38,44 @@ Bureaucrat::~Bureaucrat(void)
 	std::cout << "[Bureaucrat] destructor was called!" << std::endl;
 }
 
-Bureaucrat::Bureaucrat	&operator = (const Bureaucrat &other)
+Bureaucrat	&Bureaucrat::operator = (const Bureaucrat &other)
 {
 	std::cout << "[Bureaucrat] sign operator was called!" << std::endl;
 	if (this != &other)
-	{
-		this->_name = other.getName();
 		this->_grade = other.getGrade();
-	}
 	return (*this);
 }
 
-std::string	Bureaucrat::getNmae(void) const {return (this->_name);}
+std::string	Bureaucrat::getName(void) const {return (this->_name);}
 
 int	Bureaucrat::getGrade(void) const {return (this->_grade);}
+
+void	Bureaucrat::increment(void)
+{
+	if (this->_grade - 1 < MAX_GRADE)
+		throw GradeTooHighException();
+	this->_grade--;
+}
+
+void	Bureaucrat::decrement(void)
+{
+	if (this->_grade + 1 > MIN_GRADE)
+		throw GradeToolowException();
+	this->_grade++;
+}
+
+const char	*Bureaucrat::GradeTooHighException::what(void) const throw()
+{
+	return ("Grade too high");
+}
+
+const char	*Bureaucrat::GradeToolowException::what(void) const throw()
+{
+	return ("Grade too low");
+}
+
+std::ostream &operator << (std::ostream &os, const Bureaucrat &other)
+{
+	os << other.getName() << ", Bureaucrat grade " << other.getGrade();
+	return (os);
+}

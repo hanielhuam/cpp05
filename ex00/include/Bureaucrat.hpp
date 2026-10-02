@@ -13,20 +13,39 @@
 #include <string>
 #include <iostream>
 
-#define MIN_GRADE 150;
-#define MAX_GRADE 1;
+#define MIN_GRADE 150
+#define MAX_GRADE 1
 
 class Bureaucrat
 {
 	private:
-		std::string const	_name;
+		const std::string	_name;
 		int					_grade;
 
 	public:
 		Bureaucrat(void);
-		Bureaucrat(std::string name, int grade);
+		Bureaucrat(const std::string &name, const int &grade);
 		Bureaucrat(const Bureaucrat &other);
 		~Bureaucrat(void);
 
 		Bureaucrat	&operator = (const Bureaucrat &other);
+
+		int	getGrade(void) const;
+		std::string	getName(void) const;
+		void	increment(void);
+		void	decrement(void);
+
+		class GradeToolowException : public std::exception
+		{
+			public:
+				const char	*what(void) const throw();
+		};
+		
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				const char	*what(void) const throw();
+		};
 };
+
+std::ostream &operator << (std::ostream &os, const Bureaucrat &other);
