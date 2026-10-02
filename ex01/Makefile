@@ -4,11 +4,11 @@ SRC_DIR = src
 OBJ_DIR = obj
 INCLUDE = -Iinclude
 
-SRCS = ${SRC_DIR}/main.cpp ${SRC_DIR}/ClapTrap.cpp
+SRCS = ${SRC_DIR}/main.cpp ${SRC_DIR}/Bureaucrat.cpp ${SRC_DIR}/Form.cpp
 
 OBJS = $(SRCS:${SRC_DIR}/%.cpp=${OBJ_DIR}/%.o)
 
-NAME = clapTrap
+NAME = Form
 
 all: ${NAME}
 

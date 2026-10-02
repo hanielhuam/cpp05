@@ -34,8 +34,10 @@ class Bureaucrat
 
 		int	getGrade(void) const;
 		std::string	getName(void) const;
+
 		void	increment(void);
 		void	decrement(void);
+		void	signForm(const Form &form);
 
 		class GradeToolowException : public std::exception
 		{
