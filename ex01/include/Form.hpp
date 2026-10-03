@@ -15,6 +15,7 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
 class Form
 {
 private:
@@ -39,7 +40,7 @@ public:
 
 	void	beSigned(const Bureaucrat &bureaucat);
 
-	class GradeToolowException : public std::exception
+	class GradeTooLowException : public std::exception
 	{
 		public:
 			const char	*what(void) const throw();
@@ -52,4 +53,4 @@ public:
 	};
 };
 
-std::ostream	&operator << (const std::ostream &os, const Form &other);
+std::ostream	&operator << (std::ostream &os, const Form &other);

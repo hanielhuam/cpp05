@@ -14,30 +14,32 @@
 
 #include <string>
 #include <iostream>
+#include "Form.hpp"
 
 #define MIN_GRADE 150
 #define MAX_GRADE 1
 
+class Form;
 class Bureaucrat
 {
 	private:
 		const std::string	_name;
-		int					_grade;
+		unsigned int		_grade;
 
 	public:
 		Bureaucrat(void);
-		Bureaucrat(const std::string &name, const int &grade);
+		Bureaucrat(const std::string &name, const unsigned int &grade);
 		Bureaucrat(const Bureaucrat &other);
 		~Bureaucrat(void);
 
 		Bureaucrat	&operator = (const Bureaucrat &other);
 
-		int	getGrade(void) const;
+		unsigned int	getGrade(void) const;
 		std::string	getName(void) const;
 
 		void	increment(void);
 		void	decrement(void);
-		void	signForm(const Form &form);
+		void	signForm(Form &form);
 
 		class GradeToolowException : public std::exception
 		{

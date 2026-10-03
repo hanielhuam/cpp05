@@ -15,43 +15,16 @@
 
 int	main(void)
 {
-	Bureaucrat	a("Haniel", 1);
-	Bureaucrat	b(a);
-	Bureaucrat	c("Haniel", 150);
-	try
-	{
-		Bureaucrat	d("Haniel", 151);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	try
-	{
-		Bureaucrat	e("Haniel", 0);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	try
-	{
-		b.increment();
-	}
-	catch(const std::exception	&e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	b.decrement();
-	try
-	{
-		c.decrement();
-	}
-	catch(const std::exception	&e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	c.increment();
-	std::cout << a << std::endl << b << std::endl << c << std::endl;
+	Form	form1;
+	Form	form2("hani Form", 59, 59);
+	Form	form3(form1);
+	Form	form4 = form2;
+	Bureaucrat	bureaucrat1("Haniel", 1);
+	Bureaucrat	bureaucrat2("Huam", 150);
+
+	bureaucrat1.signForm(form2);
+	bureaucrat2.signForm(form4);
+	std::cout << form1 << std::endl << form2 << std::endl <<
+	form3 << std::endl << form4 << std::endl;
 	return (0);
 }
