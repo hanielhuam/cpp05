@@ -29,16 +29,19 @@ public:
 	AForm(const std::string &name, const unsigned int &signGrade,
 		const unsigned int &executionGrade);
 	AForm(const Form &other);
-	~AForm(void);
+	virtual ~AForm(void) = 0;
 
 	AForm	&operator = (const AForm &other);
 
 	std::string	getName(void) const;
-	int	getSigned(void) const;
+	bool	getSigned(void) const;
+	void	setSigned(bool formSigned);
 	unsigned int	getSignGrade(void) const;
 	unsigned int	getExecutionGrade(void) const;
 
 	void	beSigned(const Bureaucrat &bureaucat);
+	void	excute(const Bureaucrat &bureaucat);
+	virtual	action(const Bureaucrat &bureaucrat) const = 0;
 
 	class GradeTooLowException : public std::exception
 	{

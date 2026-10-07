@@ -50,7 +50,9 @@ AForm	&AForm::operator = (const AForm &other)
 
 std::string	AForm::getName(void) const {return (this->_name);}
 
-int	AForm::getSigned(void) const {return (this->_signed);}
+bool	AForm::getSigned(void) const {return (this->_signed);}
+
+bool	AForm::setSigned(bool formSigned) {this->_signed = formaSigned;}
 
 unsigned int	AForm::getSignGrade(void) const {return (this->_signGrade);}
 
@@ -61,6 +63,12 @@ void	AForm::beSigned(const Bureaucrat &bureaucrat)
 	if (bureaucrat.getGrade() >= this->_signGrade)
 		throw GradeTooLowException();
 	this->_signed = true;
+}
+
+void	AForm::execute(cont Bureaucrat &bureaucrat)
+{
+	if (!this->_signed)
+		
 }
 
 const char	*AForm::GradeTooLowException::what(void) const throw()
