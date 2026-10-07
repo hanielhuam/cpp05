@@ -50,7 +50,7 @@ Form	&Form::operator = (const Form &other)
 
 std::string	Form::getName(void) const {return (this->_name);}
 
-int	Form::getSigned(void) const {return (this->_signed);}
+bool	Form::getSigned(void) const {return (this->_signed);}
 
 unsigned int	Form::getSignGrade(void) const {return (this->_signGrade);}
 

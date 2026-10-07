@@ -34,7 +34,7 @@ public:
 	Form	&operator = (const Form &other);
 
 	std::string	getName(void) const;
-	int	getSigned(void) const;
+	bool	getSigned(void) const;
 	unsigned int	getSignGrade(void) const;
 	unsigned int	getExecutionGrade(void) const;
 
