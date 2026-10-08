@@ -52,8 +52,6 @@ std::string	AForm::getName(void) const {return (this->_name);}
 
 bool	AForm::getSigned(void) const {return (this->_signed);}
 
-bool	AForm::setSigned(bool formSigned) {this->_signed = formaSigned;}
-
 unsigned int	AForm::getSignGrade(void) const {return (this->_signGrade);}
 
 unsigned int	AForm::getExecutionGrade(void) const {return (this->_executionGrade);}
@@ -79,6 +77,11 @@ const char	*AForm::GradeTooLowException::what(void) const throw()
 const char	*AForm::GradeTooHighException::what(void) const throw()
 {
 	return ("[AForm] grade too high");
+}
+
+const char	*AForm::FormIsNotSignedException::what(void) const throw()
+{
+	return ("[AForm] Form is not signed");
 }
 
 std::ostream	&operator << (std::ostream &os, const AForm &other)

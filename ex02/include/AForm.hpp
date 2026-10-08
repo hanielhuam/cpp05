@@ -35,7 +35,6 @@ public:
 
 	std::string	getName(void) const;
 	bool	getSigned(void) const;
-	void	setSigned(bool formSigned);
 	unsigned int	getSignGrade(void) const;
 	unsigned int	getExecutionGrade(void) const;
 
@@ -50,6 +49,12 @@ public:
 	};
 	
 	class GradeTooHighException : public std::exception
+	{
+		public:
+			const char	*what(void) const throw();
+	};
+
+	class FormIsNotSignedException : public std::exception
 	{
 		public:
 			const char	*what(void) const throw();
