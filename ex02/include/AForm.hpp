@@ -29,7 +29,7 @@ public:
 	AForm(const std::string &name, const unsigned int &signGrade,
 		const unsigned int &executionGrade);
 	AForm(const Form &other);
-	virtual ~AForm(void) = 0;
+	virtual ~AForm(void) const = 0;
 
 	AForm	&operator = (const AForm &other);
 

@@ -63,10 +63,13 @@ void	AForm::beSigned(const Bureaucrat &bureaucrat)
 	this->_signed = true;
 }
 
-void	AForm::execute(cont Bureaucrat &bureaucrat)
+void	AForm::execute(const Bureaucrat &bureaucrat)
 {
 	if (!this->_signed)
-		
+		throw FormIsNotSignedException();
+	if (bureaucrat.getGrade() > this->_executionGrade)
+		throw GradeTooLowException();
+	this->action();
 }
 
 const char	*AForm::GradeTooLowException::what(void) const throw()

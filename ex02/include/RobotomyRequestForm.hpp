@@ -11,3 +11,21 @@
 /* ************************************************************************** */
 
 #pragma once
+
+#include <iostream>
+#include "AForm.hpp"
+
+class RobotomyRequestForm
+{
+private:
+	const std::string	_target
+public:
+	RobotomyRequestForm(void);
+	RobotomyRequestForm(const std::string target);
+	RobotomyRequestForm(const RobotomyRequestForm other);
+	~RobotomyRequestForm(void);
+
+	RobotomyRequestForm	&operator = (const RobotomyRequestForm &other);
+
+	void	action(void) const;
+};

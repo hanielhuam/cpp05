@@ -12,16 +12,20 @@
 
 #pragma once
 
-class ShrubberyCreationForm
-{
-private:
-	std::string	_target;
-public:
-	ShrubberyCreationForm(void);
-	ShrubberyCreationForm(std::string target);
-	ShrubberyCreationForm(const ShrubberyCreationForm &other);
-	~ShrubberyCreationForm(void);
+#include <iostream>
+#include "AForm.hpp"
 
-	ShrubberyCreationForm	&operator = (const ShrubberyCreationForm &other);
-	
+class ShrubberyCreationForm : public AForm
+{
+	private:
+		const td::string	_target;
+	public:
+		ShrubberyCreationForm(void);
+		ShrubberyCreationForm(std::string target);
+		ShrubberyCreationForm(const ShrubberyCreationForm &other);
+		~ShrubberyCreationForm(void);
+
+		ShrubberyCreationForm	&operator = (const ShrubberyCreationForm &other);
+
+		action(void) const;
 };
