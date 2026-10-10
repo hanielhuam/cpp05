@@ -14,12 +14,12 @@
 
 #include <string>
 #include <iostream>
-#include "Form.hpp"
+#include "AForm.hpp"
 
 #define MIN_GRADE 150
 #define MAX_GRADE 1
 
-class Form;
+class AForm;
 class Bureaucrat
 {
 	private:
@@ -39,7 +39,7 @@ class Bureaucrat
 
 		void	increment(void);
 		void	decrement(void);
-		void	signForm(Form &form);
+		void	signForm(AForm &form);
 
 		class GradeToolowException : public std::exception
 		{

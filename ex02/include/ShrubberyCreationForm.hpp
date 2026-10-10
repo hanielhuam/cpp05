@@ -18,7 +18,7 @@
 class ShrubberyCreationForm : public AForm
 {
 	private:
-		const td::string	_target;
+		const std::string	_target;
 	public:
 		ShrubberyCreationForm(void);
 		ShrubberyCreationForm(std::string target);
@@ -27,5 +27,5 @@ class ShrubberyCreationForm : public AForm
 
 		ShrubberyCreationForm	&operator = (const ShrubberyCreationForm &other);
 
-		action(void) const;
+		void	action(void) const;
 };

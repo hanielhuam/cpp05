@@ -15,14 +15,14 @@
 #include <iostream>
 #include "AForm.hpp"
 
-class RobotomyRequestForm
+class RobotomyRequestForm : public AForm
 {
 private:
-	const std::string	_target
+	const std::string	_target;
 public:
 	RobotomyRequestForm(void);
 	RobotomyRequestForm(const std::string target);
-	RobotomyRequestForm(const RobotomyRequestForm other);
+	RobotomyRequestForm(const RobotomyRequestForm &other);
 	~RobotomyRequestForm(void);
 
 	RobotomyRequestForm	&operator = (const RobotomyRequestForm &other);

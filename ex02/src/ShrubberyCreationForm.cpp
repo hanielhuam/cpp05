@@ -11,21 +11,22 @@
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
+#include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm(void) : _target("default"),
-	AForm("ShrubberyCreationForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(void) :
+	AForm("ShrubberyCreationForm", 145, 137), _target("default")
 {
 	std::cout << "[ShrubberyCreationForm] Default constructor was called!" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : _target(target),
-	AForm("ShrubberyCreationForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) :
+	AForm("ShrubberyCreationForm", 145, 137), _target(target)
 {
 	std::cout << "[ShrubberyCreationForm] Parametirized constructor was called!" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : 
-	_target(other._target), AForm(other)
+	AForm(other), _target(other._target)
 {
 	std::cout << "[ShrubberyCreationForm] Copy constructor was called!" << std::endl;
 }

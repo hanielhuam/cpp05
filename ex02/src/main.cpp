@@ -11,20 +11,47 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int	main(void)
 {
-	Form	form1;
-	Form	form2("hani Form", 59, 59);
-	Form	form3(form1);
-	Form	form4 = form2;
-	Bureaucrat	bureaucrat1("Haniel", 1);
-	Bureaucrat	bureaucrat2("Huam", 150);
+	PresidentialPardonForm presidentForm("President");
+	ShrubberyCreationForm shrubberyForm;
+	RobotomyRequestForm robotomyForm("Robotomy");
+	Bureaucrat	haniel("Haniel", 1);
+	Bureaucrat	huam("Huam", 150);
 
-	bureaucrat1.signForm(form2);
-	bureaucrat2.signForm(form4);
-	std::cout << form1 << std::endl << form2 << std::endl <<
-	form3 << std::endl << form4 << std::endl;
+	haniel.signForm(presidentForm);
+	haniel.signForm(shrubberyForm);
+	try
+	{
+		presidentForm.execute(huam);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	try
+	{
+		shrubberyForm.execute(huam);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	try
+	{
+		robotomyForm.execute(haniel);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	haniel.signForm(robotomyForm);
+	robotomyForm.execute(haniel);
+	shrubberyForm.execute(haniel);
+	presidentForm.execute(haniel);
 	return (0);
 }

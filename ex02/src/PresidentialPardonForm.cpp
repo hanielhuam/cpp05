@@ -12,20 +12,20 @@
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(void) : _target("Default"),
-	AForm("PresidentialPardonForm", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm(void) :
+	AForm("PresidentialPardonForm", 25, 5), _target("Default")
 {
 	std::cout << "[PresidentialPardonForm] Default constructor was called!" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string target) :
-	_target(target), AForm("PresidentialPardonForm", 25, 5)
+	AForm("PresidentialPardonForm", 25, 5), _target(target)
 {
 	std::cout << "[PresidentialPardonForm] Parameterized constructor was called!" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other) :
-	_target(other._target), AForm(other)
+	 AForm(other), _target(other._target)
 {
 	std::cout << "[PresidentialPardonForm] copy constructor was called!" << std::endl;
 }
@@ -45,6 +45,6 @@ PresidentialPardonForm	&PresidentialPardonForm::operator = (const PresidentialPa
 
 void	PresidentialPardonForm::action(void) const
 {
-	td::cout << this->_target << " has been pardoned by Zaphod Beeblebrox."
+	std::cout << this->_target << " has been pardoned by Zaphod Beeblebrox."
 		<< std::endl;
 }
